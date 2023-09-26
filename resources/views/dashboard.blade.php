@@ -24,10 +24,10 @@
     <link rel="shortcut icon" href="{{ url('../backend/images/logo/logo_dr_sepatuku.jpeg') }}" type="image/x-icon">
 
     <!-- Vendor CSS-->
-    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
-    <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
-    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="{{ url('../backend/vendor/animsition/animsition.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ url('../backend/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ url('../backend/vendor/wow/animate.css') }}" rel="stylesheet" media="all">
+    <link href="{{ url('../backend/vendor/css-hamburgers/hamburgers.min.css') }}" rel="stylesheet" media="all">
     <link href="{{ url('../backend/vendor/slick/slick.css') }}" rel="stylesheet" media="all">
     <link href="{{ url('../backend/vendor/select2/select2.min.css') }}" rel="stylesheet" media="all">
     <link href="{{ url('../backend/vendor/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" media="all">
@@ -96,10 +96,10 @@
                                 <i class="fas fa-box"></i>Layanan <i class="fas fa-caret-down"></i></a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="login.html"><i class="fas fa-plus"></i>Tambah Data</a>
+                                    <a href="{{ url('/new/service/add') }}"><i class="fas fa-plus"></i>Tambah Data</a>
                                 </li>
                                 <li>
-                                    <a href="register.html"><i class="fas fa-cube"></i>Detail Layanan</a>
+                                    <a href="{{ url('/detail/service') }}"><i class="fas fa-cube"></i>Detail Layanan</a>
                                 </li>
                             </ul>
                         </li>
@@ -171,10 +171,10 @@
                                 <i class="fas fa-box"></i>Layanan <i class="fas fa-caret-down"></i></a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="login.html"><i class="fas fa-plus"></i>Tambah Data</a>
+                                    <a href="{{ url('/new/service/add') }}"><i class="fas fa-plus"></i>Tambah Data</a>
                                 </li>
                                 <li>
-                                    <a href="register.html"><i class="fas fa-cube"></i>Detail Layanan</a>
+                                    <a href="{{ url('/detail/service') }}"><i class="fas fa-cube"></i>Detail Layanan</a>
                                 </li>
                             </ul>
                         </li>
