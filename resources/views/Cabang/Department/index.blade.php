@@ -28,10 +28,10 @@
 
     <!-- Vendor CSS-->
     <link href="{{ url('../backend/vendor/animsition/animsition.min.css') }}" rel="stylesheet" media="all">
-    <link href="../backend/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet"
+    <link href="../backendvendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet"
         media="all">
-    <link href="{{ url('../backend/vendor/wow/animate.css') }}" rel="stylesheet" media="all">
-    <link href="{{ url('../backend/vendor/css-hamburgers/hamburgers.min.css') }}" rel="stylesheet" media="all">
+    <link href="../backendvendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="../backendvendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
     <link href="{{ url('../backend/vendor/slick/slick.css') }}" rel="stylesheet" media="all">
     <link href="{{ url('../backend/vendor/select2/select2.min.css') }}" rel="stylesheet" media="all">
     <link href="{{ url('../backend/vendor/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet"
@@ -65,7 +65,7 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="has-sub">
-                            <a class="js-arrow" href="{{ url('/dashboard') }}">
+                            <a class="js-arrow" href="{{ url('/') }}">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard
                             </a>
                         </li>
@@ -132,7 +132,7 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="{{ url('/dashboard') }}">
+                <a href="#">
                     <img src="{{ url('../backend/images/logo/logo_dr_sepatuku.jpeg') }}"
                         style="width: 60px; position:relative; left: 90px;">
                 </a>
@@ -141,7 +141,7 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li class=" has-sub">
-                            <a class="js-arrow" href="{{ url('/dashboard') }}">
+                            <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard
 
                             </a>
@@ -150,7 +150,7 @@
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-building"></i>Cabang <i class="fas fa-caret-down"></i></a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
+                                <li class="active">
                                     <a href="{{ url('/department') }}"><i class="fas fa-plus"></i>Tambah Data</a>
                                 </li>
                                 <li>
@@ -380,10 +380,10 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
-                                    <h2 class="title-1">Jadwal Absen</h2>
+                                    <h2 class="title-1">Department</h2>
                                     <button class="au-btn au-btn-icon au-btn--blue" data-toggle="modal"
-                                        data-target="#tambahJadwalAbsen">
-                                        <i class="zmdi zmdi-plus"></i>Tambah Jadwal Absen</button>
+                                        data-target="#tambahDepartment">
+                                        <i class="zmdi zmdi-plus"></i>Tambah Department</button>
                                 </div>
                             </div>
                         </div>
@@ -397,57 +397,55 @@
                                     <table class="table table-data2">
                                         <thead>
                                             <tr>
+                                                <th>No</th>
+                                                <th>Judul</th>
+                                                <th>Deskripsi</th>
+                                                <th>Id User</th>
 
-                                                <th>Tanggal</th>
-                                                <th>Jam Masuk</th>
-                                                <th>Jam Keluar</th>
-                                                <th>Department</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($jadwal_absen as $ja)
-                                                
-
-                                                {{-- akhir modal --}}
-                                                <tr class="tr-shadow">
-
-                                                    <td>{{ $ja->tanggal }}</td>
-                                                    <td>
-                                                        <span class="block-email">{{ substr($ja->jam_masuk, 0, 5) }}
-                                                            WIB</span>
-                                                    </td>
-                                                    <td class="desc"> {{ substr($ja->jam_keluar, 0, 5) }} WIB</td>
-                                                    <td>{{ $ja->id_department }}</td>
 
 
-                                                    <td>
-                                                        <div class="table-data-feature">
 
-                                                            <button class="item" data-toggle="modal"
-                                                                data-target="#editJadwalAbsen_{{ $ja->id }}">
-                                                                <i class="zmdi zmdi-edit"></i>
+                                          @foreach($department as $d)
+                                            <tr class="tr-shadow">
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $d->judul_department }}</td>
+                                                <td>
+                                                   {{ $d->deskripsi_department }}
+                                                </td>
+                                                <td>{{ $d->id_user }}</td>
+
+
+                                                <td>
+                                                    <div class="table-data-feature">
+
+                                                        <button class="item" data-toggle="modal"
+                                                            data-target="#editJadwalAbsen">
+                                                            <i class="zmdi zmdi-edit"></i>
+                                                        </button>
+                                                        <form action="" method="post">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button class="item" data-toggle="tooltip"
+                                                                data-placement="top" title=""
+                                                                data-original-title="Delete">
+                                                                <i class="zmdi zmdi-delete"></i>
                                                             </button>
-                                                            <form action="{{ url('/jadwal-absen/' . $ja->id) }}"
-                                                                method="post">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button class="item" data-toggle="tooltip"
-                                                                    data-placement="top" title=""
-                                                                    data-original-title="Delete">
-                                                                    <i class="zmdi zmdi-delete"></i>
-                                                                </button>
-                                                            </form>
-                                                            {{-- <button class="item" data-toggle="tooltip"
+                                                        </form>
+                                                        {{-- <button class="item" data-toggle="tooltip"
                                                             data-placement="top" title=""
                                                             data-original-title="More">
                                                             <i class="zmdi zmdi-more"></i>
                                                         </button> --}}
 
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                    </div>
+                                                </td>
+                                            </tr>
                                             @endforeach
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -474,15 +472,15 @@
 
 
     {{-- modal tambah absen --}}
-    <div class="modal fade" id="tambahJadwalAbsen" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel"
+    <div class="modal fade" id="tambahDepartment" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel"
         style="display: none;" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
-            <form action="{{ url('/jadwal-absen') }}" method="post">
+            <form action="{{ url('/department') }}" method="post">
                 @csrf
 
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="tambahJadwalAbsen">Tambah Jadwal Absen</h5>
+                        <h5 class="modal-title" id="tambahDepartment">Tambah Department</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -490,38 +488,16 @@
                     <div class="modal-body">
 
                         <div class="form-group">
-                            <label for="Tanggal" class="control-label mb-1">Tanggal</label>
-                            <input id="tanggal" name="tanggal" type="date" class="form-control"
+                            <label for="department" class="control-label mb-1">Department</label>
+                            <input id="department" name="department" type="text" class="form-control"
                                 aria-required="true" aria-invalid="false" required>
                         </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="jamMasuk" class="control-label mb-1">Jam Masuk</label>
-                                    <input id="jamMasuk" name="jam_masuk" type="time"
-                                        class="form-control cc-exp" required>
-                                    <span class="help-block" data-valmsg-for="cc-exp"
-                                        data-valmsg-replace="true"></span>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <label for="jamKeluar" class="control-label mb-1">Jam Keluar</label>
-                                <div class="input-group">
-                                    <input id="jamKeluar" name="jam_keluar" type="time"
-                                        class="form-control cc-cvc" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group has-success">
-                            <label for="department" class="control-label mb-1">Department</label>
-                            <select name="department" id="select" class="form-control" required>
-                                <option value="1">Pilih Department</option>
-                                <option value="2">Option #1</option>
-                                <option value="3">Option #2</option>
-                                <option value="4">Option #3</option>
-                            </select>
 
+                         <div class="form-group">
+                            <label for="deskripsi" class="control-label mb-1">Deskripsi</label>
+                            <textarea  id="textarea-input" name="deskripsi" rows="6" cols="500" placeholder="Content..." class="form-control" required></textarea>
                         </div>
+                    
 
 
 

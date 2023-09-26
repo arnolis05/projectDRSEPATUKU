@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\JadwalAbsenController;
-use App\Http\Controllers\loginController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -26,3 +26,5 @@ Route::get('/logout/user', function () {
 
 
 Route::resource('/jadwal-absen', JadwalAbsenController::class);
+Route::resource('/department', DepartmentController::class);
+
