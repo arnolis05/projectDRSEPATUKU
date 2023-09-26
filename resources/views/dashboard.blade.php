@@ -24,10 +24,10 @@
     <link rel="shortcut icon" href="{{ url('../backend/images/logo/logo_dr_sepatuku.jpeg') }}" type="image/x-icon">
 
     <!-- Vendor CSS-->
-    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
-    <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
-    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="{{ url('../backend/vendor/animsition/animsition.min.css') }}" rel="stylesheet" media="all">
+    <link href="../backendvendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="../backendvendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="../backendvendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
     <link href="{{ url('../backend/vendor/slick/slick.css') }}" rel="stylesheet" media="all">
     <link href="{{ url('../backend/vendor/select2/select2.min.css') }}" rel="stylesheet" media="all">
     <link href="{{ url('../backend/vendor/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" media="all">
@@ -38,6 +38,8 @@
 </head>
 
 <body class="animsition">
+
+
     <div class="page-wrapper">
         <!-- HEADER MOBILE-->
         <header class="header-mobile d-block d-lg-none">
@@ -72,7 +74,7 @@
                                     <a href="login.html"><i class="fas fa-user"></i>Karyawan</a>
                                 </li>
                                 <li>
-                                    <a href="register.html"><i class="fas fa-clock"></i>Jadwal Absen</a>
+                                    <a href="{{ url('/jadwal-absen') }}"><i class="fas fa-clock"></i>Jadwal Absen</a>
                                 </li>
                             </ul>
                         </li>
@@ -134,6 +136,7 @@
                         <li class="active has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard
+                              
                             </a>
                         </li>
                         <li class="has-sub">
@@ -147,7 +150,7 @@
                                     <a href="login.html"><i class="fas fa-user"></i>Karyawan</a>
                                 </li>
                                 <li>
-                                    <a href="register.html"><i class="fas fa-clock"></i>Jadwal Absen</a>
+                                    <a href="{{ url('/jadwal-absen') }}"><i class="fas fa-clock"></i>Jadwal Absen</a>
                                 </li>
                             </ul>
                         </li>

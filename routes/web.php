@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\JadwalAbsenController;
+use App\Http\Controllers\loginController;
 use Illuminate\Support\Facades\Route;
+
+
 
 Route::resource('/', 'loginController');
 Route::resource('/proses/login/user', 'loginController');
@@ -11,3 +15,7 @@ Route::get('/logout/user', function () {
     session()->forget('id');
     return redirect('/');
 });
+
+
+
+Route::resource('/jadwal-absen', JadwalAbsenController::class);
