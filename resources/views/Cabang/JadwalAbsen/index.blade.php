@@ -201,7 +201,7 @@
                             </ul>
                         </li>
                     </ul>
-                
+
             </div>
         </aside>
         <!-- END MENU SIDEBAR-->
@@ -393,9 +393,6 @@
 
                         <div class="row">
                             <div class="col-md-12">
-
-
-
                                 <div class="table-responsive table-responsive-data2">
                                     <table class="table table-data2">
                                         <thead>
@@ -410,6 +407,9 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($jadwal_absen as $ja)
+                                                
+
+                                                {{-- akhir modal --}}
                                                 <tr class="tr-shadow">
 
                                                     <td>{{ $ja->tanggal }}</td>
@@ -428,120 +428,26 @@
                                                                 data-target="#editJadwalAbsen_{{ $ja->id }}">
                                                                 <i class="zmdi zmdi-edit"></i>
                                                             </button>
-                                                            <form action="{{ url('/jadwal-absen/'.$ja->id) }}" method="post">
+                                                            <form action="{{ url('/jadwal-absen/' . $ja->id) }}"
+                                                                method="post">
                                                                 @csrf
                                                                 @method('DELETE')
-                                                            <button class="item" data-toggle="tooltip"
-                                                                data-placement="top" title=""
-                                                                data-original-title="Delete">
-                                                                <i class="zmdi zmdi-delete"></i>
-                                                            </button>
+                                                                <button class="item" data-toggle="tooltip"
+                                                                    data-placement="top" title=""
+                                                                    data-original-title="Delete">
+                                                                    <i class="zmdi zmdi-delete"></i>
+                                                                </button>
                                                             </form>
                                                             {{-- <button class="item" data-toggle="tooltip"
                                                             data-placement="top" title=""
                                                             data-original-title="More">
                                                             <i class="zmdi zmdi-more"></i>
                                                         </button> --}}
-                                                        
+
                                                         </div>
                                                     </td>
                                                 </tr>
-
-                                                {{-- modal edit absen --}}
-                                                <div class="modal fade" id="editJadwalAbsen_{{ $ja->id }}"
-                                                    tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel"
-                                                    style="display: none;" aria-hidden="true">
-                                                    <div class="modal-dialog modal-lg" role="document">
-                                                        <form action="{{ url('/jadwal-absen') }}" method="post">
-                                                            @csrf
-
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title"
-                                                                        id="editJadwalAbsen_{{ $ja->id }}">
-                                                                        Tambah Jadwal Absen</h5>
-                                                                    <button type="button" class="close"
-                                                                        data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">×</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-
-                                                                    <div class="form-group">
-                                                                        <label for="Tanggal"
-                                                                            class="control-label mb-1">Tanggal</label>
-                                                                        <input id="tanggal" name="tanggal"
-                                                                            type="date" class="form-control"
-                                                                            aria-required="true" aria-invalid="false"
-                                                                            required>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-6">
-                                                                            <div class="form-group">
-                                                                                <label for="jamMasuk"
-                                                                                    class="control-label mb-1">Jam
-                                                                                    Masuk</label>
-                                                                                <input id="jamMasuk" name="jam_masuk"
-                                                                                    type="time"
-                                                                                    class="form-control cc-exp"
-                                                                                    required>
-                                                                                <span class="help-block"
-                                                                                    data-valmsg-for="cc-exp"
-                                                                                    data-valmsg-replace="true"></span>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-6">
-                                                                            <label for="jamKeluar"
-                                                                                class="control-label mb-1">Jam
-                                                                                Keluar</label>
-                                                                            <div class="input-group">
-                                                                                <input id="jamKeluar"
-                                                                                    name="jam_keluar" type="time"
-                                                                                    class="form-control cc-cvc"
-                                                                                    required>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group has-success">
-                                                                        <label for="department"
-                                                                            class="control-label mb-1">Department</label>
-                                                                        <select name="department" id="select"
-                                                                            class="form-control" required>
-                                                                            <option value="1">Pilih Department
-                                                                            </option>
-                                                                            <option value="2">Option #1</option>
-                                                                            <option value="3">Option #2</option>
-                                                                            <option value="4">Option #3</option>
-                                                                        </select>
-
-                                                                    </div>
-
-
-
-
-
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-dismiss="modal">Cancel</button>
-                                                                    <button type="submit"
-                                                                        class="btn btn-primary">Simpan</button>
-                                                                </div>
-                                                            </div>
-
-                                                        </form>
-
-                                                    </div>
-                                                </div>
-
-                                                {{-- akhir modal --}}
-
-
-                                                
-
                                             @endforeach
-
-
                                         </tbody>
                                     </table>
                                 </div>
@@ -634,10 +540,6 @@
     </div>
 
     {{-- akhir modal --}}
-
-
-
-
 
     <!-- Jquery JS-->
     <script src="{{ url('../backend/vendor/jquery-3.2.1.min.js') }}"></script>
