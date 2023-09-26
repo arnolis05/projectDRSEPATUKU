@@ -53,6 +53,8 @@ class JadwalAbsenController extends Controller
         // save jadwal absen
         DB::table('tb_absensi')
             ->insert(['tanggal' => $tanggal, 'jam_masuk' => $jam_masuk, 'jam_keluar' => $jam_keluar, 'id_department' => $department]);
+
+            return redirect('/jadwal-absen')->with('success', 'Data berhasil disimpan!');
     }
 
     /**
@@ -76,7 +78,19 @@ class JadwalAbsenController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = [
+            'tanggal' => 1,
+            'jam_masuk' =>2,
+            'jam_keluar' => 1,
+            'id_department' => 2
+        ];
+
+        // update data 
+        DB::table('tb_absensi')
+            ->where('id', $id) 
+            ->update($data);
+
+            return redirect('/jadwal-absen')->with('success', 'Data berhasil diubah!');
     }
 
     /**
@@ -84,6 +98,10 @@ class JadwalAbsenController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        DB::table('tb_absensi')
+        ->where('id', $id) 
+        ->delete();
+
+        return redirect('/jadwal-absen')->with('success', 'Data berhasil dihapus!');
     }
 }
