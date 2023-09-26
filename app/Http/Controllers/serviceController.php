@@ -9,6 +9,8 @@ class serviceController extends Controller
 {
     public function index()
     {
+        // asdasd
+
         $id = session()->get('id');
 
         $user = DB::table('tb_userdetail')
