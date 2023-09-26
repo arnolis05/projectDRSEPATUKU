@@ -375,7 +375,9 @@
 
             <!-- MAIN CONTENT-->
             <div class="main-content">
+
                 <div class="section__content section__content--p30">
+
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
@@ -407,8 +409,6 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($jadwal_absen as $ja)
-                                                
-
                                                 {{-- akhir modal --}}
                                                 <tr class="tr-shadow">
 
@@ -425,7 +425,7 @@
                                                         <div class="table-data-feature">
 
                                                             <button class="item" data-toggle="modal"
-                                                                data-target="#editJadwalAbsen_{{ $ja->id }}">
+                                                                data-target="#editJadwalAbsen">
                                                                 <i class="zmdi zmdi-edit"></i>
                                                             </button>
                                                             <form action="{{ url('/jadwal-absen/' . $ja->id) }}"
@@ -447,7 +447,97 @@
                                                         </div>
                                                     </td>
                                                 </tr>
+
+                                                {{-- modal edit absen --}}
+                                                <div class="modal fade" id="editJadwalAbsen" tabindex="-1"
+                                                    role="dialog" aria-labelledby="mediumModalLabel"
+                                                    style="display: none;" aria-hidden="true" data-backdrop="static">
+                                                    <div class="modal-dialog modal-lg" role="document">
+                                                        <form action="{{ url('/jadwal-absen') }}" method="post">
+                                                            @csrf
+
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="editJadwalAbsen">
+                                                                        Edit Jadwal Absen</h5>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">×</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+
+                                                                    <div class="form-group">
+                                                                        <label for="Tanggal"
+                                                                            class="control-label mb-1">Tanggal</label>
+                                                                        <input id="tanggal" name="tanggal"
+                                                                            type="date" class="form-control"
+                                                                            aria-required="true" aria-invalid="false"
+                                                                            required>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-6">
+                                                                            <div class="form-group">
+                                                                                <label for="jamMasuk"
+                                                                                    class="control-label mb-1">Jam
+                                                                                    Masuk</label>
+                                                                                <input id="jamMasuk" name="jam_masuk"
+                                                                                    type="time"
+                                                                                    class="form-control cc-exp"
+                                                                                    required>
+                                                                                <span class="help-block"
+                                                                                    data-valmsg-for="cc-exp"
+                                                                                    data-valmsg-replace="true"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-6">
+                                                                            <label for="jamKeluar"
+                                                                                class="control-label mb-1">Jam
+                                                                                Keluar</label>
+                                                                            <div class="input-group">
+                                                                                <input id="jamKeluar"
+                                                                                    name="jam_keluar" type="time"
+                                                                                    class="form-control cc-cvc"
+                                                                                    required>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group has-success">
+                                                                        <label for="department"
+                                                                            class="control-label mb-1">Department</label>
+                                                                        <select name="department" id="select"
+                                                                            class="form-control" required>
+                                                                            <option>Pilih Department</option>
+                                                                            @foreach ($department as $d)
+                                                                                <option value="{{ $d->id }}">
+                                                                                    {{ $d->judul_department }}</option>
+                                                                            @endforeach
+
+                                                                        </select>
+
+                                                                    </div>
+
+
+
+
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Cancel</button>
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary">Simpan</button>
+                                                                </div>
+                                                            </div>
+
+                                                        </form>
+
+                                                    </div>
+                                                </div>
+
+                                                {{-- akhir modal --}}
                                             @endforeach
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -463,14 +553,21 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
+
+
                 </div>
+
             </div>
             <!-- END MAIN CONTENT-->
             <!-- END PAGE CONTAINER-->
+
         </div>
 
+
     </div>
+
 
 
     {{-- modal tambah absen --}}
@@ -516,10 +613,10 @@
                             <label for="department" class="control-label mb-1">Department</label>
                             <select name="department" id="select" class="form-control" required>
                                 <option>Pilih Department</option>
-                                @foreach($department as $d)
-                                <option value="{{ $d->id }}">{{ $d->judul_department }}</option>
+                                @foreach ($department as $d)
+                                    <option value="{{ $d->id }}">{{ $d->judul_department }}</option>
                                 @endforeach
-                               
+
                             </select>
 
                         </div>
