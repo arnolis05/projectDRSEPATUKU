@@ -22,6 +22,7 @@ class DepartmentController extends Controller
         $department = DB::table('tb_department')
             ->select('*')
             ->get();
+            
 
 
 

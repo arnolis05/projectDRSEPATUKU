@@ -515,10 +515,11 @@
                         <div class="form-group has-success">
                             <label for="department" class="control-label mb-1">Department</label>
                             <select name="department" id="select" class="form-control" required>
-                                <option value="1">Pilih Department</option>
-                                <option value="2">Option #1</option>
-                                <option value="3">Option #2</option>
-                                <option value="4">Option #3</option>
+                                <option>Pilih Department</option>
+                                @foreach($department as $d)
+                                <option value="{{ $d->id }}">{{ $d->judul_department }}</option>
+                                @endforeach
+                               
                             </select>
 
                         </div>

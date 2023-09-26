@@ -24,11 +24,18 @@ class JadwalAbsenController extends Controller
 
             ->get();
 
+        // get id dan judul departmen
+        $department = DB::table('tb_department')
+        ->select('id', 'judul_department')
+            ->get();
+
+
 
 
         return view('Cabang.JadwalAbsen.index')
             ->with('user_name', $user->nama_lengkap)
             ->with('user_mail', $user->email)
+            ->with('department', $department)
             ->with('jadwal_absen', $jadwal_absen);
     }
 
