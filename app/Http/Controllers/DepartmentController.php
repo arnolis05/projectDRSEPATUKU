@@ -33,8 +33,7 @@ class DepartmentController extends Controller
         return view('Cabang.Department.index')
             ->with('user_name', $user->nama_lengkap)
             ->with('user_mail', $user->email)
-            ->with('department', $department)
-            ;
+            ->with('department', $department);
     }
 
     /**
@@ -90,7 +89,20 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+
+        $data = [
+            'judul_department' => 'asdasdas',
+            'deskripsi_department' => 'asdasdasd',
+
+        ];
+
+        // update data 
+        DB::table('tb_department')
+            ->where('id', $id)
+            ->update($data);
+
+        return redirect('/department')->with('success', 'Data berhasil diubah!');
     }
 
     /**
@@ -98,6 +110,10 @@ class DepartmentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        DB::table('tb_department')
+        ->where('id', $id)
+            ->delete();
+
+        return redirect('/department')->with('success', 'Data berhasil dihapus!');
     }
 }

@@ -426,7 +426,7 @@
                                                             data-target="#editJadwalAbsen">
                                                             <i class="zmdi zmdi-edit"></i>
                                                         </button>
-                                                        <form action="" method="post">
+                                                        <form action="{{ url('/department/'.$d->id) }}" method="post">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button class="item" data-toggle="tooltip"
